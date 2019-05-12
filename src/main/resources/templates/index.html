@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Welcome</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<h1>Welcome</h1>
+
+<h2>Choose the service</h2>
+
+<form th:action="@{/save}" th:each="action : ${actions}"  method="post">
+    <select >
+        <option th:text="${action.getDescription()}"></option>
+    </select>
+    <!--<input type="hidden" th:field="${id}" />-->
+    <button type="submit" th:href="@{/welldone.html}">Save</button>
+</form>
+
+</body>
+
+</html>

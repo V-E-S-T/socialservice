@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+
+    <head th:fragment="header" th:id="header">
+
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>SosialService</title>
+
+        <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+        <link rel="stylesheet" th:href="@{webjars/bootstrap/4.3.1/css/bootstrap.min.css}">
+        <link rel="stylesheet" th:href="@{webjars/noty/3.1.4/demo/font-awesome/css/font-awesome.min.css}">
+        <link rel="stylesheet" th:href="@{webjars/datatables/1.10.19/css/dataTables.bootstrap4.min.css}">
+        <link rel="stylesheet" th:href="@{webjars/noty/3.1.4/lib/noty.css}">
+        <link rel="stylesheet" th:href="@{/images/icon.png}">
+        <link rel="stylesheet" th:href="@{/css/style.css}">
+        <link rel="stylesheet" th:href="@{/css/footer.css}">
+
+        <script type="text/javascript" th:src="@{webjars/jquery/3.3.1-2/jquery.min.js}" defer></script>
+        <script type="text/javascript" th:src="@{webjars/datatables/1.10.19/js/jquery.dataTables.min.js}" defer></script>
+        <script type="text/javascript" th:src="@{webjars/datatables/1.10.19/js/dataTables.bootstrap4.min.js}" defer></script>
+        <script type="text/javascript" th:src="@{webjars/noty/3.1.4/lib/noty.min.js}" defer></script>
+
+    </head>
+    <body>
+
+        <div class="container-fluid">
+            <div th:fragment="navbar_fragment">
+                <!--<nav th:insert="fragments/navbar.html :: navbar_fragment></nav>-->
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <a class="navbar-brand" href="#">Navbar</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarColor03">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Features</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Pricing</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">About</a>
+                            </li>
+                        </ul>
+                        <form class="form-inline my-2 my-lg-0">
+                            <input class="form-control mr-sm-2" type="text" placeholder="Search">
+                            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+                        </form>
+                    </div>
+                </nav>
+            </div>
+            <div  th:fragment="frag">
+                <t1>JOPASISKIGLAZAROST</t1>
+            </div>
+            <div th:fragment="footer_fragment">
+                <div th:fragment="footer_fragment" class="subnavigation-container">
+                    <div class="container">
+                        <nav class="navbar p-a-0">
+                            <ul class="nav navbar-nav col-subnav">
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="#">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Features</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Pricing</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">About</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+
+                <div class="m-t-3"></div>
+
+                <footer class="mainfooter" role="contentinfo">
+                    <div class="footer-top p-y-2">
+                        <div class="container-fluid">
+                            <div class="row">
+
+                                <div class="col-md-12">
+                                    <div class="footer-title text-xs-center">
+                                        <h4 class="p-b-1">Contact Us</h4>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="card card-primary">
+                                        <div class="card-header">Council</div>
+                                    </div>
+                                </div><!--col-md-2-->
+                                <div class="col-md-2">
+                                    <div class="card card-primary">
+                                        <div class="card-header">Social Media</div>
+                                    </div>
+                                </div><!--col-md-2-->
+                                <div class="col-md-2">
+                                    <div class="card card-primary">
+                                        <div class="card-header">Boards and Committees</div>
+                                    </div>
+                                </div><!--col-md-2-->
+                                <div class="col-md-2">
+                                    <div class="card card-primary">
+                                        <div class="card-header">Departments</div>
+                                    </div>
+                                </div><!--col-md-2-->
+                                <div class="col-md-2">
+                                    <div class="card card-primary">
+                                        <div class="card-header">Staff</div>
+                                    </div>
+                                </div><!--col-md-2-->
+                                <div class="col-md-2">
+                                    <div class="card card-primary">
+                                        <div class="card-header">Fire and Police</div>
+                                    </div>
+                                </div><!--col-md-2-->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer-middle">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-3 col-sm-6">
+                                    <!--Column1-->
+                                    <div class="footer-pad">
+                                        <h4>Address</h4>
+                                        <address>
+                                            <ul class="list-unstyled">
+                                                <li>
+                                                    City Hall<br>
+                                                    212  Street<br>
+                                                    Lawoma<br>
+                                                    735<br>
+                                                </li>
+                                                <li>
+                                                    Phone: 0
+                                                </li>
+                                            </ul>
+                                        </address>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-6">
+                                    <!--Column1-->
+                                    <div class="footer-pad">
+                                        <h4>Popular Services</h4>
+                                        <ul class="list-unstyled">
+                                            <li><a href="#"></a></li>
+                                            <li><a href="#">Payment Center</a></li>
+                                            <li><a href="#">Contact Directory</a></li>
+                                            <li><a href="#">Forms</a></li>
+                                            <li><a href="#">News and Updates</a></li>
+                                            <li><a href="#">FAQs</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-6">
+                                    <!--Column1-->
+                                    <div class="footer-pad">
+                                        <h4>Website Information</h4>
+                                        <ul class="list-unstyled">
+                                            <li><a href="#">Website Tutorial</a></li>
+                                            <li><a href="#">Accessibility</a></li>
+                                            <li><a href="#">Disclaimer</a></li>
+                                            <li><a href="#">Privacy Policy</a></li>
+                                            <li><a href="#">FAQs</a></li>
+                                            <li><a href="#">Webmaster</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-6">
+                                    <!--Column1-->
+                                    <div class="footer-pad">
+                                        <h4>Popular Departments</h4>
+                                        <ul class="list-unstyled">
+                                            <li><a href="#">Parks and Recreation</a></li>
+                                            <li><a href="#">Public Works</a></li>
+                                            <li><a href="#">Police Department</a></li>
+                                            <li><a href="#">Fire</a></li>
+                                            <li><a href="#">Mayor and City Council</a></li>
+                                            <li>
+                                                <a href="#"></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer-bottom">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <!--Footer Bottom-->
+                                    <p class="text-xs-center">&copy; Copyright 2016 - City of USA.  All rights reserved.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+
+    </body>
+</html>

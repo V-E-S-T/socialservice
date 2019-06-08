@@ -1,6 +1,10 @@
 package com.socialserv.model;
 
-public class Action {
+import java.io.Serializable;
+
+public class Action implements Serializable {
+
+    private int id;
 
     private int price;
 
@@ -10,7 +14,7 @@ public class Action {
 
     private Specialization specialization;
 
-    public Action(int price, String description, int estimateTime, Specialization specialization) {
+    public Action(int id, int price, String description, int estimateTime, Specialization specialization) {
         this.price = price;
         this.description = description;
         this.estimateTime = estimateTime;
@@ -47,5 +51,13 @@ public class Action {
 
     public void setSpecialization(Specialization specialization) {
         this.specialization = specialization;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

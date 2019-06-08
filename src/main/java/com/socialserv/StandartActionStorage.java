@@ -10,9 +10,9 @@ import java.util.List;
 @Repository
 public class StandartActionStorage {
 
-    private static final Action CLEAN = new Action(100, "Light cleaning service", 60, Specialization.CLEANER);
-    private static final Action CARRY = new Action(50, "Carrier service", 60, Specialization.CARRIER);
-    private static final Action MEDICAL = new Action(100, "Simple medical services", 60, Specialization.MEDIC);
+    private static final Action CLEAN = new Action(0, 100, "Light cleaning service", 60, Specialization.CLEANER);
+    private static final Action CARRY = new Action(1, 50, "Carrier service", 60, Specialization.CARRIER);
+    private static final Action MEDICAL = new Action(2,100, "Simple medical services", 60, Specialization.MEDIC);
 
     private static final List<Action> actionList = new ArrayList<Action>()
     {{add(CLEAN);
@@ -30,5 +30,15 @@ public class StandartActionStorage {
 
     public List<Action> getAll(){
         return actionList;
+    }
+
+    public Action getById(int actionId){
+//        actionList.forEach(action -> action.getId() == actionId ? action);
+        for (Action action: actionList){
+            if (action.getId() == actionId){
+                return action;
+            }
+        }
+        return null;
     }
 }

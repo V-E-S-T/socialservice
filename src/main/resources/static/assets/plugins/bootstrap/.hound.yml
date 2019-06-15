@@ -1,0 +1,5 @@
+javascript:
+  config_file: lopa/.jshintrc
+  enabled: true
+scss:
+  enabled: false

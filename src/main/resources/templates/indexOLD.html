@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!--<head th:include="templates/fragments/head.html :: head"></head>-->
+<!--<header th:insert="~{..templates}"> </header>-->
+<!--<head th:insert="~{..templates}">-->
+<!--<head th:insert="~{head :: head}">-->
+<!--th:href="@{/indexOLD.html}-->
+<!--<title>Social Service</title>-->
+<!--<th:block th:include="..rw">-->
+<!--</th:block>-->
+
+<!--<div th:insert="..templates/f~{head}"></div>-->
+
+    <!--<head>-->
+        <!--<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">-->
+        <!--<title>SosialService</title>-->
+        <!--&lt;!&ndash;<base href="${pageContext.request.contextPath}/" />&ndash;&gt;-->
+        <!--<link rel="stylesheet" th:href="@{/css/style.css}">-->
+        <!--<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">-->
+        <!--<link rel="stylesheet" th:href="@{webjars/noty/3.1.4/demo/font-awesome/css/font-awesome.min.css}">-->
+        <!--<link rel="stylesheet" th:href="@{webjars/datatables/1.10.19/css/dataTables.bootstrap4.min.css}">-->
+        <!--<link rel="stylesheet" th:href="@{webjars/noty/3.1.4/lib/noty.css}">-->
+        <!--<link rel="stylesheet" th:href="@{/images/icon.png}">-->
+        <!--&lt;!&ndash;<link rel="stylesheet" href="../resources/css/style.css">&ndash;&gt;-->
+        <!--&lt;!&ndash;<link rel="stylesheet" href="../resources/css/bootstrap.min.css">&ndash;&gt;-->
+        <!--&lt;!&ndash;<link rel="stylesheet" href="webjars/noty/3.1.4/demo/font-awesome/css/font-awesome.min.css">&ndash;&gt;-->
+        <!--&lt;!&ndash;<link rel="stylesheet" href="webjars/datatables/1.10.19/css/dataTables.bootstrap4.min.css">&ndash;&gt;-->
+        <!--&lt;!&ndash;<link rel="stylesheet" href="webjars/noty/3.1.4/lib/noty.css" />&ndash;&gt;-->
+        <!--&lt;!&ndash;<link rel="shortcut icon" href="resources/images/icon-meal.png">&ndash;&gt;-->
+
+        <!--&lt;!&ndash;    <%&#45;&#45;http://stackoverflow.com/a/24070373/548473&#45;&#45;%>&ndash;&gt;-->
+        <!--<script type="text/javascript" th:src="@{webjars/jquery/3.3.1-2/jquery.min.lopa}" defer></script>-->
+        <!--<script type="text/javascript" th:src="@{webjars/datatables/1.10.19/lopa/jquery.dataTables.min.lopa}" defer></script>-->
+        <!--<script type="text/javascript" th:src="@{webjars/datatables/1.10.19/lopa/dataTables.bootstrap4.min.lopa}" defer></script>-->
+        <!--<script type="text/javascript" th:src="@{webjars/noty/3.1.4/lib/noty.min.lopa}" defer></script>-->
+        <!--&lt;!&ndash;<script type="text/javascript" src="webjars/jquery/3.3.1-2/jquery.min.lopa" defer></script>&ndash;&gt;-->
+        <!--&lt;!&ndash;<script type="text/javascript" src="webjars/bootstrap/4.3.1/lopa/bootstrap.min.lopa" defer></script>&ndash;&gt;-->
+        <!--&lt;!&ndash;<script type="text/javascript" src="webjars/datatables/1.10.19/lopa/jquery.dataTables.min.lopa" defer></script>&ndash;&gt;-->
+        <!--&lt;!&ndash;<script type="text/javascript" src="webjars/datatables/1.10.19/lopa/dataTables.bootstrap4.min.lopa" defer></script>&ndash;&gt;-->
+        <!--&lt;!&ndash;<script type="text/javascript" src="webjars/noty/3.1.4/lib/noty.min.lopa" defer></script>&ndash;&gt;-->
+    <!--</head>-->
+
+
+
+<!--<div th:fragment="../fragments/head.html"/>-->
+
+<!--<head th:include="templates/fragments/head.html :: head"></head>-->
+<head th:insert="head"> </head>
+
+    <body>
+
+        <div id = "services">
+            <h1>Welcome</h1>
+
+            <h2>Choose the service</h2>
+
+            <div class="jumbotron pt-4">
+                <div class="container">
+
+                    <br />
+                    <!--<button class="btn btn-primary" onclick="add()">-->
+                    <!--<span class="fa fa-plus"></span>-->
+                    <!--<spring:message code="common.add"/>-->
+                    <!--</button>-->
+
+
+                    <table id="example" class="display col-4">
+                        <tbody>
+                        <tr th:each="action : ${actions}">
+                            <td th:text="${action.getDescription()}"></td>
+                            <td>
+                                <form  action="#" th:action="@{/save}" th:object="${action}" method="post">
+                                    <!--<input type="hidden" name="foo"   value="bar" />-->
+                                    <!--<input type="hidden" name="lorem" value="ipsum" />-->
+                                    <button type="submit" name="actionId" class="btn btn-success"
+                                            th:value="${action.getId()}"
+                                            th:text="SAVE"></button>
+                                </form>
+                                <!--<button type="submit" name="saveAction" class="btn btn-success" th:object="${action}" th:method="post">-->
+                                <!--&lt;!&ndash;<span class="fa fa-plus"></span>&ndash;&gt;-->
+                                <!--&lt;!&ndash;th:href="@{/welldone.html}&ndash;&gt;-->
+                                <!--&lt;!&ndash;th:action="@{/save}"&ndash;&gt;-->
+                                <!--SAVE-->
+                                <!--</button>-->
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+    </body>
+</html>

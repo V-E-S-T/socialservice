@@ -21,11 +21,11 @@ public class WorkController {
     @Autowired
     StandartActionStorage standartActionStorage;
 
-    @RequestMapping(value = "/")
+    @RequestMapping(value="/", method=RequestMethod.GET)
     public String services(Model model){
         model.addAttribute("actions", standartActionStorage.getAll());
-        return "page";
-//        return "index";
+//        return "page";
+        return "index";
     }
 
     @RequestMapping(value = "/save", method= RequestMethod.POST, consumes = {"application/x-www-form-urlencoded"})

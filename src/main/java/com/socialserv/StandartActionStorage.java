@@ -14,9 +14,18 @@ public class StandartActionStorage {
     private static final Action CARRY = new Action(1, 50, "Carrier service", 60, Specialization.CARRIER);
     private static final Action MEDICAL = new Action(2,100, "Simple medical services", 60, Specialization.MEDIC);
 
-    private static final List<Action> actionList = new ArrayList<Action>()
+    private static final List<Action> actionListAll = new ArrayList<Action>()
     {{add(CLEAN);
         add(CARRY);
+        add(MEDICAL);}};
+    private static final List<Action> actionListBasic = new ArrayList<Action>()
+    {{add(CLEAN);
+        add(CARRY);}};
+    private static final List<Action> actionListAllInclude = new ArrayList<Action>()
+    {{add(CLEAN);
+        add(MEDICAL);}};
+    private static final List<Action> actionListPremium = new ArrayList<Action>()
+    {{add(CARRY);
         add(MEDICAL);}};
 
     public Action getAction(String actionName){
@@ -28,13 +37,25 @@ public class StandartActionStorage {
         }
     }
 
-    public List<Action> getAll(){
-        return actionList;
+    public static List<Action> getAll(){
+        return actionListAll;
+    }
+
+    public static List<Action> getActionListBasic() {
+        return actionListBasic;
+    }
+
+    public static List<Action> getActionListAllInclude() {
+        return actionListAllInclude;
+    }
+
+    public static List<Action> getActionListPremium() {
+        return actionListPremium;
     }
 
     public Action getById(int actionId){
-//        actionList.forEach(action -> action.getId() == actionId ? action);
-        for (Action action: actionList){
+//        actionListAll.forEach(action -> action.getId() == actionId ? action);
+        for (Action action: actionListAll){
             if (action.getId() == actionId){
                 return action;
             }

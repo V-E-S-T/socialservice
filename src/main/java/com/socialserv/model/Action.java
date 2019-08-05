@@ -16,6 +16,7 @@ public class Action implements Serializable {
 
     public Action(int id, int price, String description, int estimateTime, Specialization specialization) {
         this.price = price;
+        this.id = id;
         this.description = description;
         this.estimateTime = estimateTime;
         this.specialization = specialization;

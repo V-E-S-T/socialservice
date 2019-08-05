@@ -1,6 +1,5 @@
 package com.socialserv.service;
 
-import com.socialserv.StandartActionStorage;
 import com.socialserv.model.Action;
 import com.socialserv.model.Work;
 import com.socialserv.repository.WorkRepository;
@@ -21,9 +20,10 @@ public class WorkServiceImpl implements WorkService{
     }
 
     @Override
-    public Work save(Action action) {
-        LocalDateTime registered= LocalDateTime.now();
-        Work work = new Work(action, registered);
+    public Work save(Work work) {
+        work.setRegistered(LocalDateTime.now());
+//        LocalDateTime registered= LocalDateTime.now();
+//        Work work = new Work(action, registered);
         return workRepository.save(work);
     }
 

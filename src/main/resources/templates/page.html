@@ -2,34 +2,29 @@
 
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 
-    <head th:insert="fragments/general.html :: header">
+    <head th:insert="fragments/general.html :: head"></head>
 
-        <!--<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">-->
-        <!--<title>SosialService</title>-->
-
-        <!--<link rel="stylesheet" th:href="@{/css/style.css}">-->
-        <!--<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">-->
-        <!--<link rel="stylesheet" th:href="@{webjars/noty/3.1.4/demo/font-awesome/css/font-awesome.min.css}">-->
-        <!--<link rel="stylesheet" th:href="@{webjars/datatables/1.10.19/css/dataTables.bootstrap4.min.css}">-->
-        <!--<link rel="stylesheet" th:href="@{webjars/noty/3.1.4/lib/noty.css}">-->
-        <!--<link rel="stylesheet" th:href="@{/images/icon.png}">-->
-        <!--<script type="text/javascript" th:src="@{webjars/jquery/3.3.1-2/jquery.min.js}" defer></script>-->
-        <!--<script type="text/javascript" th:src="@{webjars/datatables/1.10.19/js/jquery.dataTables.min.js}" defer></script>-->
-        <!--<script type="text/javascript" th:src="@{webjars/datatables/1.10.19/js/dataTables.bootstrap4.min.js}" defer></script>-->
-        <!--<script type="text/javascript" th:src="@{webjars/noty/3.1.4/lib/noty.min.js}" defer></script>-->
-
-    </head>
     <body>
-        <div th:insert="fragments/general.html :: navbar_fragment"></div>
-        <div th:insert="fragments/general.html :: frag"></div>
-        <div th:insert="fragments/general.html :: footer_fragment"></div>
 
+        <header th:insert="fragments/general.html :: header"></header>
 
+        <section th:insert="fragments/general.html :: hero"></section>
+        <!--<section th:insert="fragments/general.html :: get-started"></section>-->
+        <!--<section th:insert="fragments/general.html :: about-us"></section>-->
+        <!--<section th:insert="fragments/general.html :: features"></section>-->
+        <!--<section th:insert="fragments/general.html :: screenshots"></section>-->
+        <!--<section th:insert="fragments/general.html :: video"></section>-->
+        <section th:insert="fragments/general.html :: team"></section>
+        <section th:insert="fragments/general.html :: testimonials"></section>
+        <section th:insert="fragments/general.html :: pricing"></section>
+        <!--<section th:insert="fragments/general.html :: blog"></section>-->
+        <!--<section th:insert="fragments/general.html :: newsletter"></section>-->
+        <section th:insert="fragments/general.html :: contact"></section>
 
+        <footer th:insert="fragments/general.html :: footer"></footer>
 
+        <a class="back-to-top"><i class="fa fa-chevron-up" th:href="@{#}"></i></a>
 
     </body>
-
-    <!--<footer th:insert="fragments/footer.html :: footer_fragment"></footer>-->
 
 </html>

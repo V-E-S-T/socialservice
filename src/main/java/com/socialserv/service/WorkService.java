@@ -1,13 +1,13 @@
 package com.socialserv.service;
 
-import com.socialserv.model.Action;
+
 import com.socialserv.model.Work;
 
 import java.util.List;
 
 public interface WorkService {
 
-    Work save(Action action);
+    Work save(Work work);
 
     boolean delete(int id);
 

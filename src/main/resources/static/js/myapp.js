@@ -23,7 +23,7 @@ $(document).ready(function(){
         // $('.newTaskForm #title').val('');
         // $('.newTaskForm #content').val('');
         // $('.newTaskForm #status').val('OPEN');
-        // $('.newTaskForm #newTaskModal').modal();
+        $('.newTaskForm #newTaskModal').modal();
     });
 });
 

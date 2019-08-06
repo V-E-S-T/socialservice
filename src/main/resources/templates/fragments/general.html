@@ -519,7 +519,7 @@
                                 <div class="row">
                                     <div class="col">
                                         <div style="margin-bottom: 20px;">
-                                            <button class="btn btn-primary newBtn">
+                                            <button class="btn btn-primary newBtn" th:action="@{/order}">
                                                 <i class="fas fa-plus-circle"></i>  New Task
                                             </button>
                                         </div>
@@ -528,6 +528,20 @@
 
                                 <div class="table_btn">
                                     <a href="#" data-toggle="modal" data-target="#myCategoryModal" class="btn newBtn"><i class="fa fa-shopping-cart" th:attr="data-target='#myCategoryModal'" th:action="@{/order}"></i>Заказать</a>
+                                </div>
+
+                                <a href="#" data-toggle="modal" class="btn newBtn"><i class="fa fa-shopping-cart" th:attr="data-target='#myModal'" th:action="@{/order}"></i>Заказать</a>
+                                <!--<button class="btn fa-shopping-cart btn-default" type="button" data-toggle="modal" data-target="#myModal">Показать всплывающее окно</button>-->
+                                <div id="myModal" class="modal fade">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header"><button class="close" type="button" data-dismiss="modal">×</button>
+                                                <h4 class="modal-title">Заголовок окна</h4>
+                                            </div>
+                                            <div class="modal-body">Текст уведомления</div>
+                                            <div class="modal-footer"><button class="btn btn-default" type="button" data-dismiss="modal">Закрыть</button></div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -609,6 +623,52 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <div class="col-xl-8 col-lg-7">
+                <div class="newTaskForm">
+                    <form th:action="@{/order}" th:method="post">
+                        <div class="modal fade" id="newTaskModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <input  type="hidden" value="" class="form-control" id="id" name="id"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="title">Title:</label>
+                                            <input value="" type="text" class="form-control" id="title" name="title"/>
+                                        </div>
+                                        <!--<div class="form-group">-->
+                                        <!--<label for="status">Status:</label>-->
+                                        <!--<select id="status" class="form-control" name="status">-->
+                                        <!--<option th:each="status : ${statusList}"-->
+                                        <!--th:text="${status}" th:value="${status}">-->
+                                        <!--</option>-->
+                                        <!--</select>-->
+                                        <!--</div>-->
+                                        <div class="form-group">
+                                            <label for="content">Content:</label>
+                                            <textarea value="" class="form-control" name="content"
+                                                      id="content" rows="5">
+                            </textarea>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <input type="submit" class="btn btn-primary" value="save"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </section>
@@ -917,51 +977,51 @@
 
         <!--NEW Modal-->
 
-        <div class="col-xl-8 col-lg-7">
-            <div class="newTaskForm">
-                <form th:action="@{/order/morder}" th:method="post">
-                    <div class="modal fade" id="newTaskModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="form-group">
-                                        <input  type="hidden" value="" class="form-control" id="id" name="id"/>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="title">Title:</label>
-                                        <input value="" type="text" class="form-control" id="title" name="title"/>
-                                    </div>
+        <!--<div class="col-xl-8 col-lg-7">-->
+            <!--<div class="newTaskForm">-->
+                <!--<form th:action="@{/order/morder}" th:method="post">-->
+                    <!--<div class="modal fade" id="newTaskModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
+                        <!--<div class="modal-dialog" role="document">-->
+                            <!--<div class="modal-content">-->
+                                <!--<div class="modal-header">-->
+                                    <!--<h5 class="modal-title" id="exampleModalLabel">Edit</h5>-->
+                                    <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+                                        <!--<span aria-hidden="true">&times;</span>-->
+                                    <!--</button>-->
+                                <!--</div>-->
+                                <!--<div class="modal-body">-->
                                     <!--<div class="form-group">-->
-                                        <!--<label for="status">Status:</label>-->
-                                        <!--<select id="status" class="form-control" name="status">-->
-                                            <!--<option th:each="status : ${statusList}"-->
-                                                    <!--th:text="${status}" th:value="${status}">-->
-                                            <!--</option>-->
-                                        <!--</select>-->
+                                        <!--<input  type="hidden" value="" class="form-control" id="id" name="id"/>-->
                                     <!--</div>-->
-                                    <div class="form-group">
-                                        <label for="content">Content:</label>
-                                        <textarea value="" class="form-control" name="content"
-                                                  id="content" rows="5">
-                            </textarea>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <input type="submit" class="btn btn-primary" value="save"/>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
+                                    <!--<div class="form-group">-->
+                                        <!--<label for="title">Title:</label>-->
+                                        <!--<input value="" type="text" class="form-control" id="title" name="title"/>-->
+                                    <!--</div>-->
+                                    <!--&lt;!&ndash;<div class="form-group">&ndash;&gt;-->
+                                        <!--&lt;!&ndash;<label for="status">Status:</label>&ndash;&gt;-->
+                                        <!--&lt;!&ndash;<select id="status" class="form-control" name="status">&ndash;&gt;-->
+                                            <!--&lt;!&ndash;<option th:each="status : ${statusList}"&ndash;&gt;-->
+                                                    <!--&lt;!&ndash;th:text="${status}" th:value="${status}">&ndash;&gt;-->
+                                            <!--&lt;!&ndash;</option>&ndash;&gt;-->
+                                        <!--&lt;!&ndash;</select>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                                    <!--<div class="form-group">-->
+                                        <!--<label for="content">Content:</label>-->
+                                        <!--<textarea value="" class="form-control" name="content"-->
+                                                  <!--id="content" rows="5">-->
+                            <!--</textarea>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <!--<div class="modal-footer">-->
+                                    <!--<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
+                                    <!--<input type="submit" class="btn btn-primary" value="save"/>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</form>-->
+            <!--</div>-->
+        <!--</div>-->
 
 
 

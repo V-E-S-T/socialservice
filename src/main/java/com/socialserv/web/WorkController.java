@@ -52,8 +52,19 @@ public class WorkController {
 //        return "index";
     }
 
+//    @RequestMapping(value = "/order", method= RequestMethod.GET)
     @RequestMapping(value = "/order", method= RequestMethod.POST, consumes = {"application/x-www-form-urlencoded"})
-    public String order(@ModelAttribute(value="order") Order order){
+//    public String order(@ModelAttribute(value="order") Order order){
+    public String order(Model model){
+
+        //final Integer actionId = Integer.valueOf(req.getParameter("actionId"));
+//        Action action1 = standartActionStorage.getById(actionId);
+//        workService.save(action1);
+        return "welldone";
+    }
+
+    @RequestMapping(value = "/order", method= RequestMethod.GET)
+    public String orderGet(Model model){
 
         //final Integer actionId = Integer.valueOf(req.getParameter("actionId"));
 //        Action action1 = standartActionStorage.getById(actionId);

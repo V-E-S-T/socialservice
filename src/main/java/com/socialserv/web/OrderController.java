@@ -27,7 +27,7 @@ public class OrderController {
         return "page";
     }
 
-    @RequestMapping(value = "/order")
+    @RequestMapping(value = "/border")
     public String orderOrder(Model model){
         List<Action> basicActions = StandartActionStorage.getActionListBasic();
         model.addAttribute("basicActions", basicActions);

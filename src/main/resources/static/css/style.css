@@ -1038,7 +1038,7 @@ body.mobile-nav-active #mobile-nav-toggle i {
   color: #3c4857;
 }
 
-#pricing .block-pricing .table .table_btn a {
+#pricing .block-pricing .table .table_btn button {
   background: #71c55d;
   color: #fff;
   margin: 0;

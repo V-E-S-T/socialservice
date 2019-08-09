@@ -515,34 +515,41 @@
                                     <!--<button type="submit">Заказать</button>-->
                                 <!--</form>-->
 
+                                <!--<div class="row">-->
+                                    <!--<div class="col">-->
+                                        <!--<div style="margin-bottom: 20px;">-->
+                                            <!--<button class="btn btn-primary newBtn" th:action="@{/order}">-->
+                                                <!--<i class="fas fa-plus-circle"></i>  New Task-->
+                                            <!--</button>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
 
-                                <div class="row">
-                                    <div class="col">
-                                        <div style="margin-bottom: 20px;">
-                                            <button class="btn btn-primary newBtn" th:action="@{/order}">
-                                                <i class="fas fa-plus-circle"></i>  New Task
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
+                                <!--<div class="table_btn">-->
+                                    <!--<a href="#" class="btn newBtn"><i class="fa fa-shopping-cart"></i>Заказать</a>-->
+                                <!--</div>-->
 
                                 <div class="table_btn">
-                                    <a href="#" data-toggle="modal" data-target="#myCategoryModal" class="btn newBtn"><i class="fa fa-shopping-cart" th:attr="data-target='#myCategoryModal'" th:action="@{/order}"></i>Заказать</a>
+                                    <button class="btn fa fa-shopping-cart newBtn">
+                                        Заказать
+                                    </button>
                                 </div>
 
-                                <a href="#" data-toggle="modal" class="btn newBtn"><i class="fa fa-shopping-cart" th:attr="data-target='#myModal'" th:action="@{/order}"></i>Заказать</a>
+
+
+                                <!--<a href="#" data-toggle="modal" class="btn newBtn"><i class="fa fa-shopping-cart" th:attr="data-target='#newTaskForm'" ></i>Заказать</a>-->
                                 <!--<button class="btn fa-shopping-cart btn-default" type="button" data-toggle="modal" data-target="#myModal">Показать всплывающее окно</button>-->
-                                <div id="myModal" class="modal fade">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header"><button class="close" type="button" data-dismiss="modal">×</button>
-                                                <h4 class="modal-title">Заголовок окна</h4>
-                                            </div>
-                                            <div class="modal-body">Текст уведомления</div>
-                                            <div class="modal-footer"><button class="btn btn-default" type="button" data-dismiss="modal">Закрыть</button></div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <!--<div id="myModal" class="modal fade">-->
+                                    <!--<div class="modal-dialog">-->
+                                        <!--<div class="modal-content">-->
+                                            <!--<div class="modal-header"><button class="close" type="button" data-dismiss="modal">×</button>-->
+                                                <!--<h4 class="modal-title">Заголовок окна</h4>-->
+                                            <!--</div>-->
+                                            <!--<div class="modal-body">Текст уведомления</div>-->
+                                            <!--<div class="modal-footer"><button class="btn btn-default" type="button" data-dismiss="modal">Закрыть</button></div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
                             </div>
                         </div>
                     </div>
@@ -569,7 +576,9 @@
                                     <!--<li>мелкий бытовой ремонт</li>-->
                                 </ul>
                                 <div class="table_btn">
-                                    <a href="#" class="btn"><i class="fa fa-shopping-cart"></i>Заказать</a>
+                                    <button class="btn fa fa-shopping-cart newBtn">
+                                        Заказать
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -618,7 +627,9 @@
                                     <li>Palo Protection</li>
                                 </ul>
                                 <div class="table_btn">
-                                    <a href="#" class="btn"><i class="fa fa-shopping-cart"></i>Выбрать</a>
+                                    <button class="btn fa fa-shopping-cart newBtn">
+                                        Заказать
+                                    </button>
                                 </div>
                             </div>
                         </div>

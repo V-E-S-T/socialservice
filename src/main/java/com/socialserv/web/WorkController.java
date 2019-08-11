@@ -40,7 +40,9 @@ public class WorkController {
                 .filter(action -> (action.getId() == 1) || (action.getId() ==2))
                 .map(action -> new Work(action, null)).collect(Collectors.toList());
 
-        model.addAttribute("actions", standartActionStorage.getAll());
+        List<Action> actions = standartActionStorage.getAll();
+
+        model.addAttribute("actions", actions);
         model.addAttribute("order", new Order());
         model.addAttribute("workList_bazovij", workList_bazovij);
         model.addAttribute("workList_vse_vklucheno", workList_vse_vklucheno);
@@ -72,11 +74,42 @@ public class WorkController {
         return "welldone";
     }
 
+    @RequestMapping(value = "/basic", method= RequestMethod.GET)
+    @ResponseBody
+    public List<Work> basic(Model model){
+
+        List<Action> allActions = standartActionStorage.getAll();
+
+        List<Work> basic = allActions.stream()
+                .filter(action -> (action.getId() == 0) || (action.getId() ==1))
+                .map(action -> new Work(action, null)).collect(Collectors.toList());
+
+
+        model.addAttribute("basic", basic);
+
+        //final Integer actionId = Integer.valueOf(req.getParameter("actionId"));
+//        Action action1 = standartActionStorage.getById(actionId);
+//        workService.save(action1);
+        return basic;
+    }
+
     @RequestMapping(value = "/save", method= RequestMethod.POST, consumes = {"application/x-www-form-urlencoded"})
     public String save( final Action action, final BindingResult bindingResult, final HttpServletRequest req){
 
 
         final Integer actionId = Integer.valueOf(req.getParameter("actionId"));
+        Action action1 = standartActionStorage.getById(actionId);
+//        workService.save(action1);
+        return "welldone";
+    }
+
+    @RequestMapping(path = "/modal/{id}/delete", method = RequestMethod.GET)
+    public String delete( @PathVariable("id") long id, HttpServletRequest request, Model model){
+
+
+
+
+        final Integer actionId = Integer.valueOf(request.getParameter("actionId"));
         Action action1 = standartActionStorage.getById(actionId);
 //        workService.save(action1);
         return "welldone";

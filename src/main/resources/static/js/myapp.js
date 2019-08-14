@@ -19,17 +19,21 @@ $(document).ready(function(){
 
 $(document).ready(function(){
     $('.newBtn').on('click', function(event){
+
         var href = $(this).attr('href');
 
-        $.get(href, function(list){
-            for (let i = 0; i < list.size(); i++) {
-                $('.myForm #id').val(task.id);
-            }
-            $('.myForm #id').val(task.id);
-            $('.myForm #title').val(task.title);
-            $('.myForm #content').val(task.content);
-            $('.myForm #status').val(task.status);
-        });
+        // $.get(href, function(modalActions){
+        //     for (let i = 0; i < modalActions.size(); i++) {
+        //         $('.myForm #description').val(modalActions.get(i).description);
+        //         $('.myForm #actionsPerWeek').val(modalActions.get(i).actionsPerWeek);
+        //         $('.myForm #weekCounter').val(modalActions.get(i).weekCounter);
+        //
+        //     }
+        //     // $('.myForm #id').val(task.id);
+        //     // $('.myForm #title').val(task.title);
+        //     // $('.myForm #content').val(task.content);
+        //     // $('.myForm #status').val(task.status);
+        // });
 
         // $('.newTaskForm #id').val('');
         // $('.newTaskForm #title').val('');
@@ -76,17 +80,13 @@ $(function () {
         "info": true,
         "columns": [
             {
-                "data": "dateTime"
-            },
-            {
                 "data": "description"
             },
             {
-                "data": "calories"
+                "data": "actionsPerWeek"
             },
             {
-                "defaultContent": "Edit",
-                "orderable": false
+                "data": "weekCounter"
             },
             {
                 "defaultContent": "Delete",
@@ -102,4 +102,14 @@ $(function () {
     });
     makeEditable();
 });
+
+function makeEditable() {
+    form = $('#modalActionsForm');
+    $(document).ajaxError(function (event, jqXHR, options, jsExc) {
+        failNoty(jqXHR);
+    });
+
+    // solve problem with cache in IE: https://stackoverflow.com/a/4303862/548473
+    $.ajaxSetup({cache: false});
+}
 

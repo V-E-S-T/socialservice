@@ -1,6 +1,7 @@
 package com.socialserv.web;
 
 import com.socialserv.StandartActionStorage;
+import com.socialserv.dto.ModalAction;
 import com.socialserv.model.Action;
 import com.socialserv.model.Order;
 import com.socialserv.model.Work;
@@ -30,28 +31,25 @@ public class WorkController {
 
         List<Action> allActions = standartActionStorage.getAll();
 
-        List<Work> workList_bazovij = allActions.stream()
+        List<Action> basicActions = allActions.stream()
                                         .filter(action -> (action.getId() == 0) || (action.getId() ==1))
-                                        .map(action -> new Work(action, null)).collect(Collectors.toList());
-        List<Work> workList_vse_vklucheno = allActions.stream()
+                                        .collect(Collectors.toList());
+        List<Action> allInclusiveActions = allActions.stream()
                 .filter(action -> (action.getId() == 0) || (action.getId() ==2))
-                .map(action -> new Work(action, null)).collect(Collectors.toList());
-        List<Work> workList_premium = allActions.stream()
+                .collect(Collectors.toList());
+        List<Action> premiumActions = allActions.stream()
                 .filter(action -> (action.getId() == 1) || (action.getId() ==2))
-                .map(action -> new Work(action, null)).collect(Collectors.toList());
+                .collect(Collectors.toList());
 
-        List<Action> actions = standartActionStorage.getAll();
+        model.addAttribute("actions", allActions);
+//        model.addAttribute("order", new Order());
+        model.addAttribute("basicActions", basicActions);
+        model.addAttribute("allInclusiveActions", allInclusiveActions);
+        model.addAttribute("premiumActions", premiumActions);
 
-        model.addAttribute("actions", actions);
-        model.addAttribute("order", new Order());
-        model.addAttribute("workList_bazovij", workList_bazovij);
-        model.addAttribute("workList_vse_vklucheno", workList_vse_vklucheno);
-        model.addAttribute("workList_premium", workList_premium);
-
-        model.addAttribute("order", new Order());
+//        model.addAttribute("order", new Order());
 
         return "page";
-//        return "index";
     }
 
 //    @RequestMapping(value = "/order", method= RequestMethod.GET)
@@ -75,22 +73,27 @@ public class WorkController {
     }
 
     @RequestMapping(value = "/basic", method= RequestMethod.GET)
-    @ResponseBody
-    public List<Work> basic(Model model){
+//    @ResponseBody
+//    public List<ModalAction> basic(@ModelAttribute("basicActions") List<Action> basicActions, Model model){
+    public String basic(@ModelAttribute("basicActions") List<Action> basicActions, Model model){
 
-        List<Action> allActions = standartActionStorage.getAll();
+        List<Action> allActions = basicActions;
 
-        List<Work> basic = allActions.stream()
+//        List<Work> basic = allActions.stream()
+//                .filter(action -> (action.getId() == 0) || (action.getId() ==1))
+//                .map(action -> new Work(action, null)).collect(Collectors.toList());
+
+        List<ModalAction> basic = allActions.stream()
                 .filter(action -> (action.getId() == 0) || (action.getId() ==1))
-                .map(action -> new Work(action, null)).collect(Collectors.toList());
+                .map(action -> new ModalAction(action, 1, 1)).collect(Collectors.toList());
 
-
-        model.addAttribute("basic", basic);
+        model.addAttribute("actions", basic);
 
         //final Integer actionId = Integer.valueOf(req.getParameter("actionId"));
 //        Action action1 = standartActionStorage.getById(actionId);
 //        workService.save(action1);
-        return basic;
+//        return basic;
+        return "page";
     }
 
     @RequestMapping(value = "/save", method= RequestMethod.POST, consumes = {"application/x-www-form-urlencoded"})

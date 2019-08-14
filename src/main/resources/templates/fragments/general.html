@@ -497,66 +497,16 @@
                             <div class="table">
                                 <h4>базовый</h4>
                                 <h2>100 рублей/неделя</h2>
-                                <ul class="list-unstyled">
-                                    <!--<li th:each="action : ${actions}">-->
-                                        <!--<div th:if="${action.id == 0 || 1}">-->
-                                            <!--<div th:text="${action.price}"></div>-->
-                                        <!--</div>-->
-                                        <!--<div th:unless="${action.id == 0 || 1}">-->
-                                            <!--<div th:text=""></div>-->
-                                        <!--</div>-->
-                                    <!--</li>-->
-                                    <li  th:text="${actions.get(0).description}"></li>
-                                    <li  th:text="${actions.get(1).description}"></li>
+                                <ul class="list-unstyled" th:each="action : ${basicActions}">
+                                    <li  th:text="${action.description}"></li>
                                 </ul>
-                                <!--<ul class="list-unstyled">-->
-                                    <!--<li><b>уборка</b> </li>-->
-                                    <!--<li><b>поход за продуктами/аптека</b></li>-->
-                                <!--</ul>-->
-
-                                <!--<form action="#" th:action="@{/order}" th:object="${order}" method="post">-->
-                                    <!--&lt;!&ndash;<input type="hiidden" th:field="*{bar}"/>&ndash;&gt;-->
-                                    <!--&lt;!&ndash;<input type="submit" />&ndash;&gt;-->
-                                    <!--&lt;!&ndash;<input type="submit">&ndash;&gt;-->
-                                    <!--<input type="hidden" th:field="*{workList_bazovij}" th:value="${workList_bazovij}"/>-->
-                                    <!--<button type="submit">Заказать</button>-->
-                                <!--</form>-->
-
-                                <!--<div class="row">-->
-                                    <!--<div class="col">-->
-                                        <!--<div style="margin-bottom: 20px;">-->
-                                            <!--<button class="btn btn-primary newBtn" th:action="@{/order}">-->
-                                                <!--<i class="fas fa-plus-circle"></i>  New Task-->
-                                            <!--</button>-->
-                                        <!--</div>-->
-                                    <!--</div>-->
-                                <!--</div>-->
-
-                                <!--<div class="table_btn">-->
-                                    <!--<a href="#" class="btn newBtn"><i class="fa fa-shopping-cart"></i>Заказать</a>-->
-                                <!--</div>-->
-
                                 <div class="table_btn">
-                                    <button class="btn fa fa-shopping-cart newBtn" th:href="@{basic}">
-                                        Заказать
-                                    </button>
+                                    <a th:href="@{/basic}">
+                                        <button class="btn fa fa-shopping-cart newBtn">
+                                            Заказать
+                                        </button>
+                                    </a>
                                 </div>
-
-
-
-                                <!--<a href="#" data-toggle="modal" class="btn newBtn"><i class="fa fa-shopping-cart" th:attr="data-target='#newTaskForm'" ></i>Заказать</a>-->
-                                <!--<button class="btn fa-shopping-cart btn-default" type="button" data-toggle="modal" data-target="#myModal">Показать всплывающее окно</button>-->
-                                <!--<div id="myModal" class="modal fade">-->
-                                    <!--<div class="modal-dialog">-->
-                                        <!--<div class="modal-content">-->
-                                            <!--<div class="modal-header"><button class="close" type="button" data-dismiss="modal">×</button>-->
-                                                <!--<h4 class="modal-title">Заголовок окна</h4>-->
-                                            <!--</div>-->
-                                            <!--<div class="modal-body">Текст уведомления</div>-->
-                                            <!--<div class="modal-footer"><button class="btn btn-default" type="button" data-dismiss="modal">Закрыть</button></div>-->
-                                        <!--</div>-->
-                                    <!--</div>-->
-                                <!--</div>-->
                             </div>
                         </div>
                     </div>
@@ -566,24 +516,11 @@
                             <div class="table">
                                 <h4>Всё включено</h4>
                                 <h2>200 рублей/неделя</h2>
-                                <ul class="list-unstyled">
-                                    <li  th:text="${actions.get(0).description}"></li>
-                                    <li  th:text="${actions.get(2).description}"></li>
-                                    <!--<li th:each="action : ${actions}">-->
-                                        <!--<div th:if="${action.id == 0 || 2}">-->
-                                            <!--<div th:text="${action.description}"></div>-->
-                                        <!--</div>-->
-                                        <!--<div th:unless="${action.id == 0 || 2}">-->
-                                            <!--<div th:text=""></div>-->
-                                        <!--</div>-->
-                                    <!--</li>-->
-                                    <!--<li><b>убрка</b> </li>-->
-                                    <!--<li><b>поход за продуктами/аптека</b></li>-->
-                                    <!--<li><b>медицинское базовое обследование</b> </li>-->
-                                    <!--<li>мелкий бытовой ремонт</li>-->
+                                <ul class="list-unstyled" th:each="action : ${allInclusiveActions}">
+                                    <li  th:text="${action.description}"></li>
                                 </ul>
                                 <div class="table_btn">
-                                    <button class="btn fa fa-shopping-cart newBtn">
+                                    <button class="btn fa fa-shopping-cart newBtn" th:href="@{allInclusive}">
                                         Заказать
                                     </button>
                                 </div>
@@ -591,50 +528,33 @@
                         </div>
                     </div>
 
-                    <!--<div class="col-md-6 col-lg-3">-->
-                        <!--<div class="block-pricing">-->
-                            <!--<div class="table">-->
-                                <!--<h4>Премиум</h4>-->
-                                <!--<h2>400 рублей/неделя</h2>-->
-                                <!--<ul class="list-unstyled">-->
-                                    <!--<li  th:text="${actions.get(1).description}"></li>-->
-                                    <!--<li  th:text="${actions.get(2).description}"></li>-->
-                                    <!--&lt;!&ndash;<li th:each="action : ${actions}">&ndash;&gt;-->
-                                        <!--&lt;!&ndash;<div th:if="${action.id == 1 || 2}">&ndash;&gt;-->
-                                            <!--&lt;!&ndash;<div th:text="${action.description}"></div>&ndash;&gt;-->
-                                        <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                                        <!--&lt;!&ndash;<div th:unless="${action.id == 1 || 2}">&ndash;&gt;-->
-                                            <!--&lt;!&ndash;<div th:text=""></div>&ndash;&gt;-->
-                                        <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                                    <!--&lt;!&ndash;</li>&ndash;&gt;-->
-                                    <!--&lt;!&ndash;<li><b>убрка</b> </li>&ndash;&gt;-->
-                                    <!--&lt;!&ndash;<li><b>поход за продуктами/аптека</b></li>&ndash;&gt;-->
-                                    <!--&lt;!&ndash;<li><b>медицинское базовое обследование</b> </li>&ndash;&gt;-->
-                                    <!--&lt;!&ndash;<li><b>мелкий бытовой ремонт</b></li>&ndash;&gt;-->
-                                    <!--&lt;!&ndash;<li><b>прогулки, помощь спуститься, подняться</b></li>&ndash;&gt;-->
-                                    <!--&lt;!&ndash;<li><b>Показ фильмов, шахматы, организация карточных игр и др</b></li>&ndash;&gt;-->
-
-                                <!--<div class="table_btn">-->
-                                    <!--<a th:href="/order" th:attr="" href="#" class="btn"><i class="fa fa-shopping-cart"></i>Заказать</a>-->
-                                <!--</div>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</div>-->
+                    <div class="col-md-6 col-lg-3">
+                        <div class="block-pricing">
+                            <div class="table">
+                                <h4>Всё включено</h4>
+                                <h2>200 рублей/неделя</h2>
+                                <ul class="list-unstyled" th:each="action : ${premiumActions}">
+                                    <li  th:text="${action.description}"></li>
+                                </ul>
+                                <div class="table_btn">
+                                    <button class="btn fa fa-shopping-cart newBtn" th:href="@{premium}">
+                                        Заказать
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                     <div class="col-md-6 col-lg-3">
                         <div class="block-pricing">
                             <div class="table">
                                 <h4>Все Услуги</h4>
                                 <h2>--</h2>
-                                <ul class="list-unstyled">
-                                    <li><b>4 GB</b> Ram</li>
-                                    <li><b>7/24</b> Tech Support</li>
-                                    <li><b>40 GB</b> SSD Cloud Storage</li>
-                                    <li>Monthly Backups</li>
-                                    <li>Palo Protection</li>
+                                <ul class="list-unstyled" th:each="action : ${allActions}">
+                                    <li  th:text="${action.description}"></li>
                                 </ul>
                                 <div class="table_btn">
-                                    <button class="btn fa fa-shopping-cart newBtn">
+                                    <button class="btn fa fa-shopping-cart newBtn" th:href="@{allActions}">
                                         Заказать
                                     </button>
                                 </div>
@@ -646,7 +566,7 @@
 
             <div class="col-xl-8 col-lg-7">
                 <div class="newTaskForm">
-                    <form th:action="@{/order}" th:method="post">
+                    <form th:action="@{/order}" th:method="post" class="myForm" id="modalActionsForm">
                         <div class="modal fade" id="newTaskModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
@@ -698,63 +618,6 @@
                                                 </tbody>
                                             </table>
                                         </div>
-
-
-
-                                        <!--<div class="form-group">-->
-                                            <!--<input  type="hidden" value="" class="form-control" id="id" name="id"/>-->
-                                        <!--</div>-->
-                                        <!--<div class="form-group">-->
-                                            <!--<label for="title">Title:</label>-->
-                                            <!--<input value="" type="text" class="form-control" id="title" name="title"/>-->
-                                        <!--</div>-->
-
-                                        <!--<div class="form-group">-->
-                                            <!--<label for="name">Name</label>-->
-                                            <!--<input type="text" name="name" id="name" placeholder="Name" class="form-control">-->
-                                        <!--</div>-->
-                                        <!--<div class="form-group">-->
-                                            <!--<label for="position">Position</label>-->
-                                            <!--<select name="position" id="position" class="form-control">-->
-                                                <!--<option value="">&#45;&#45;Select Position&#45;&#45;</option>-->
-                                                <!--<option value="Frontend Developer">Frontend Developer</option>-->
-                                                <!--<option value="UI/UX Engineer">UI/UX Engineer</option>-->
-                                                <!--<option value="iOS Engineer">iOS Engineer</option>-->
-                                                <!--<option value="Android Developer">Android Developer</option>-->
-                                            <!--</select>-->
-                                        <!--</div>-->
-                                        <!--<div class="form-group">-->
-                                            <!--<label for="office">Office</label>-->
-                                            <!--<select name="office" id="office" class="form-control">-->
-                                                <!--<option value="">&#45;&#45;Select Office&#45;&#45;</option>-->
-                                                <!--<option value="Lagos">Lagos</option>-->
-                                                <!--<option value="London">London</option>-->
-                                                <!--<option value="New York">New York</option>-->
-                                                <!--<option value="Berlin">Berlin</option>-->
-                                            <!--</select>-->
-                                        <!--</div>-->
-                                        <!--<div class="form-group">-->
-                                            <!--<label for="extn">Extn</label>-->
-                                            <!--<input type="number" name="extn" id="extn" placeholder="Extn" class="form-control">-->
-                                        <!--</div>-->
-                                        <!--<div class="form-group">-->
-                                            <!--<label for="startDate">Start Date</label>-->
-                                            <!--<input type="date" name="startDate" id="startDate" placeholder="Start Date" class="form-control">-->
-                                        <!--</div>-->
-                                        <!--<div class="form-group">-->
-                                            <!--<label for="salary">Salary</label>-->
-                                            <!--<input type="number" name="salary" id="salary" placeholder="Salary" class="form-control">-->
-                                        <!--</div>-->
-                                        <!--<div class="form-group">-->
-                                            <!--<button class="btn btn-info" id="add">Add</button>-->
-                                        <!--</div>-->
-
-                                        <!--<div class="form-group">-->
-                                            <!--<label for="content">Content:</label>-->
-                                            <!--<textarea value="" class="form-control" name="content"-->
-                                                      <!--id="content" rows="5">-->
-                            <!--</textarea>-->
-                                        <!--</div>-->
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -1015,111 +878,6 @@
             </div>
 
         </footer>
-
-
-        <!--==========================
-            Modal
-        ============================-->
-
-        <!-- EDIT modal-->
-
-        <!--<div class="col-xl-8 col-lg-7">-->
-            <!--<div class="myForm">-->
-                <!--<form th:action="@{/update}" th:method="post">-->
-                    <!--<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">-->
-                        <!--<div class="modal-dialog" role="document">-->
-                            <!--<div class="modal-content">-->
-                                <!--<div class="modal-header">-->
-                                    <!--<h5 class="modal-title" id="exampleModalLabel">Edit</h5>-->
-                                    <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
-                                        <!--<span aria-hidden="true">&times;</span>-->
-                                    <!--</button>-->
-                                <!--</div>-->
-                                <!--<div class="modal-body">-->
-                                    <!--<div class="form-group">-->
-                                        <!--<input  type="hidden" value="" class="form-control" id="id" name="id"/>-->
-                                    <!--</div>-->
-                                    <!--<div class="form-group">-->
-                                        <!--<label for="title">Title:</label>-->
-                                        <!--<input value="" type="text" class="form-control" id="title" name="title"/>-->
-                                    <!--</div>-->
-                                    <!--<div class="form-group">-->
-                                        <!--<label for="status">Status:</label>-->
-                                        <!--<select id="status" class="form-control" name="status">-->
-                                            <!--<option th:each="status : ${statusList}"-->
-                                                    <!--th:text="${status}" th:value="${status}">-->
-                                            <!--</option>-->
-                                        <!--</select>-->
-                                    <!--</div>-->
-                                    <!--<div class="form-group">-->
-                                        <!--<label for="content">Content:</label>-->
-                                        <!--<textarea value="" class="form-control" name="content"-->
-                                                  <!--id="content" rows="5">-->
-                            <!--</textarea>-->
-                                    <!--</div>-->
-                                <!--</div>-->
-                                <!--<div class="modal-footer">-->
-                                    <!--<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
-                                    <!--<input type="submit" class="btn btn-primary" value="save"/>-->
-                                <!--</div>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</form>-->
-            <!--</div>-->
-        <!--</div>-->
-
-
-        <!--NEW Modal-->
-
-        <!--<div class="col-xl-8 col-lg-7">-->
-            <!--<div class="newTaskForm">-->
-                <!--<form th:action="@{/order/morder}" th:method="post">-->
-                    <!--<div class="modal fade" id="newTaskModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
-                        <!--<div class="modal-dialog" role="document">-->
-                            <!--<div class="modal-content">-->
-                                <!--<div class="modal-header">-->
-                                    <!--<h5 class="modal-title" id="exampleModalLabel">Edit</h5>-->
-                                    <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
-                                        <!--<span aria-hidden="true">&times;</span>-->
-                                    <!--</button>-->
-                                <!--</div>-->
-                                <!--<div class="modal-body">-->
-                                    <!--<div class="form-group">-->
-                                        <!--<input  type="hidden" value="" class="form-control" id="id" name="id"/>-->
-                                    <!--</div>-->
-                                    <!--<div class="form-group">-->
-                                        <!--<label for="title">Title:</label>-->
-                                        <!--<input value="" type="text" class="form-control" id="title" name="title"/>-->
-                                    <!--</div>-->
-                                    <!--&lt;!&ndash;<div class="form-group">&ndash;&gt;-->
-                                        <!--&lt;!&ndash;<label for="status">Status:</label>&ndash;&gt;-->
-                                        <!--&lt;!&ndash;<select id="status" class="form-control" name="status">&ndash;&gt;-->
-                                            <!--&lt;!&ndash;<option th:each="status : ${statusList}"&ndash;&gt;-->
-                                                    <!--&lt;!&ndash;th:text="${status}" th:value="${status}">&ndash;&gt;-->
-                                            <!--&lt;!&ndash;</option>&ndash;&gt;-->
-                                        <!--&lt;!&ndash;</select>&ndash;&gt;-->
-                                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                                    <!--<div class="form-group">-->
-                                        <!--<label for="content">Content:</label>-->
-                                        <!--<textarea value="" class="form-control" name="content"-->
-                                                  <!--id="content" rows="5">-->
-                            <!--</textarea>-->
-                                    <!--</div>-->
-                                <!--</div>-->
-                                <!--<div class="modal-footer">-->
-                                    <!--<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
-                                    <!--<input type="submit" class="btn btn-primary" value="save"/>-->
-                                <!--</div>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</form>-->
-            <!--</div>-->
-        <!--</div>-->
-
-
-
 
     </body>
 </html>

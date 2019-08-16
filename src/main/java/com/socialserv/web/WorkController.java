@@ -63,8 +63,20 @@ public class WorkController {
         return "welldone";
     }
 
-    @RequestMapping(value = "/order", method= RequestMethod.GET)
-    public String orderGet(Model model){
+    @RequestMapping(value = "/order/{packet}", method= RequestMethod.GET)
+    public String orderGet(@PathVariable("packet") String packet, Model model){
+
+        if(packet.equals(StandartActionStorage.BASIC)){
+
+        }
+
+        if(packet.equals(StandartActionStorage.ALL_INCLUSIVE)){
+
+        }
+
+        if(packet.equals(StandartActionStorage.PREMIUM)){
+
+        }
 
         //final Integer actionId = Integer.valueOf(req.getParameter("actionId"));
 //        Action action1 = standartActionStorage.getById(actionId);

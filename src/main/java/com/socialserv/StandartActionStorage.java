@@ -4,11 +4,16 @@ import com.socialserv.model.Action;
 import com.socialserv.model.Specialization;
 import org.springframework.stereotype.Repository;
 
+import java.security.PublicKey;
 import java.util.ArrayList;
 import java.util.List;
 
 @Repository
 public class StandartActionStorage {
+
+    public static final String BASIC = "basic";
+    public static final String ALL_INCLUSIVE = "all_inclusive";
+    public static final String PREMIUM = "premium";
 
     private static final Action CLEAN = new Action(0, 100, "Light cleaning service", 60, Specialization.CLEANER);
     private static final Action CARRY = new Action(1, 50, "Carrier service", 60, Specialization.CARRIER);

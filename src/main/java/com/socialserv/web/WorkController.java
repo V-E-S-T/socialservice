@@ -20,6 +20,8 @@ import java.util.stream.Collectors;
 @RequestMapping("/")
 public class WorkController {
 
+
+
     @Autowired
     WorkService workService;
 
@@ -66,16 +68,24 @@ public class WorkController {
     @RequestMapping(value = "/order/{packet}", method= RequestMethod.GET)
     public String orderGet(@PathVariable("packet") String packet, Model model){
 
+        System.out.println("BASIC");
+
         if(packet.equals(StandartActionStorage.BASIC)){
+
+            System.out.println("BASIC");
 
         }
 
         if(packet.equals(StandartActionStorage.ALL_INCLUSIVE)){
-
+            System.out.println("ALL_INCLUSIVE");
         }
 
         if(packet.equals(StandartActionStorage.PREMIUM)){
+            System.out.println("ALL_INCLUSIVE");
+        }
 
+        if(packet.equals(StandartActionStorage.ALL_ACTIONS)){
+            System.out.println("ALL_INCLUSIVE");
         }
 
         //final Integer actionId = Integer.valueOf(req.getParameter("actionId"));
@@ -84,7 +94,7 @@ public class WorkController {
         return "welldone";
     }
 
-    @RequestMapping(value = "/basic", method= RequestMethod.GET)
+//    @RequestMapping(value = "/basic", method= RequestMethod.GET)
 //    @ResponseBody
 //    public List<ModalAction> basic(@ModelAttribute("basicActions") List<Action> basicActions, Model model){
     public String basic(@ModelAttribute("basicActions") List<Action> basicActions, Model model){

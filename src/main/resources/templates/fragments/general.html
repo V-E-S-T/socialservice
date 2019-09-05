@@ -501,10 +501,8 @@
                                     <li  th:text="${action.description}"></li>
                                 </ul>
                                 <div class="table_btn">
-                                    <a th:href="@{order/{basic}}">
-                                        <button class="btn fa fa-shopping-cart newBtn">
-                                            Заказать
-                                        </button>
+                                    <a class="btn fa fa-shopping-cart newBtn" th:href="@{order/{basic}}" role="button">
+                                        Заказать
                                     </a>
                                 </div>
                             </div>
@@ -520,10 +518,8 @@
                                     <li  th:text="${action.description}"></li>
                                 </ul>
                                 <div class="table_btn">
-                                    <a th:href="@{order/{all_inclusive}}">
-                                        <button class="btn fa fa-shopping-cart newBtn">
-                                            Заказать
-                                        </button>
+                                    <a class="btn fa fa-shopping-cart newBtn" th:href="@{order/{all_inclusive}}" role="button">
+                                        Заказать
                                     </a>
                                 </div>
                             </div>
@@ -539,10 +535,8 @@
                                     <li  th:text="${action.description}"></li>
                                 </ul>
                                 <div class="table_btn">
-                                    <a th:href="@{order/{premium}}">
-                                        <button class="btn fa fa-shopping-cart newBtn">
-                                            Заказать
-                                        </button>
+                                    <a class="btn fa fa-shopping-cart newBtn" th:href="@{order/{premium}}" role="button">
+                                        Заказать
                                     </a>
                                 </div>
                         </div>
@@ -557,9 +551,9 @@
                                     <li  th:text="${action.description}"></li>
                                 </ul>
                                 <div class="table_btn">
-                                    <button class="btn fa fa-shopping-cart newBtn" th:href="@{allActions}">
+                                    <a class="btn fa fa-shopping-cart newBtn" th:href="@{order/{all_actions}}" role="button">
                                         Заказать
-                                    </button>
+                                    </a>
                                 </div>
                             </div>
                         </div>

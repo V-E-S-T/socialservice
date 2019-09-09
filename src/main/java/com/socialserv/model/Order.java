@@ -12,7 +12,7 @@ public class Order implements Serializable {
 
     private String description;
 
-    private List<Work> workList_bazovij = new ArrayList<>();
+    private List<Work> workList = new ArrayList<>();
 
     public int getId() {
         return id;
@@ -38,12 +38,12 @@ public class Order implements Serializable {
         this.description = description;
     }
 
-    public List<Work> getWorkList_bazovij() {
-        return workList_bazovij;
+    public List<Work> getWorkList() {
+        return workList;
     }
 
-    public void setWorkList_bazovij(List<Work> workList_bazovij) {
-        this.workList_bazovij = workList_bazovij;
+    public void setWorkList(List<Work> workList) {
+        this.workList = workList;
     }
 
     @Override
@@ -57,7 +57,7 @@ public class Order implements Serializable {
         if (getTotalPrice() != order.getTotalPrice()) return false;
         if (getDescription() != null ? !getDescription().equals(order.getDescription()) : order.getDescription() != null)
             return false;
-        return getWorkList_bazovij() != null ? getWorkList_bazovij().equals(order.getWorkList_bazovij()) : order.getWorkList_bazovij() == null;
+        return getWorkList() != null ? getWorkList().equals(order.getWorkList()) : order.getWorkList() == null;
     }
 
     @Override
@@ -65,7 +65,7 @@ public class Order implements Serializable {
         int result = getId();
         result = 31 * result + getTotalPrice();
         result = 31 * result + (getDescription() != null ? getDescription().hashCode() : 0);
-        result = 31 * result + (getWorkList_bazovij() != null ? getWorkList_bazovij().hashCode() : 0);
+        result = 31 * result + (getWorkList() != null ? getWorkList().hashCode() : 0);
         return result;
     }
 }

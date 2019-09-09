@@ -13,6 +13,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -62,36 +63,38 @@ public class WorkController {
         //final Integer actionId = Integer.valueOf(req.getParameter("actionId"));
 //        Action action1 = standartActionStorage.getById(actionId);
 //        workService.save(action1);
-        return "welldone";
+        return "order";
     }
 
     @RequestMapping(value = "/order/{packet}", method= RequestMethod.GET)
     public String orderGet(@PathVariable("packet") String packet, Model model){
 
+        Order order = new Order();
+
+        List<Work> workList;
+
         System.out.println("BASIC");
 
         if(packet.equals(StandartActionStorage.BASIC)){
-
-            System.out.println("BASIC");
-
+            workList = StandartActionStorage.getActionListBasic().stream().map(action -> new Work(action, LocalDateTime.now())).collect(Collectors.toList());
+        }
+        else if(packet.equals(StandartActionStorage.ALL_INCLUSIVE)){
+            workList = StandartActionStorage.getActionListAllInclude().stream().map(action -> new Work(action, LocalDateTime.now())).collect(Collectors.toList());
+        }
+        else if(packet.equals(StandartActionStorage.PREMIUM)){
+            workList = StandartActionStorage.getActionListPremium().stream().map(action -> new Work(action, LocalDateTime.now())).collect(Collectors.toList());
+        }
+        else {
+            workList = StandartActionStorage.getAll().stream().map(action -> new Work(action, LocalDateTime.now())).collect(Collectors.toList());
         }
 
-        if(packet.equals(StandartActionStorage.ALL_INCLUSIVE)){
-            System.out.println("ALL_INCLUSIVE");
-        }
-
-        if(packet.equals(StandartActionStorage.PREMIUM)){
-            System.out.println("ALL_INCLUSIVE");
-        }
-
-        if(packet.equals(StandartActionStorage.ALL_ACTIONS)){
-            System.out.println("ALL_INCLUSIVE");
-        }
+        order.setWorkList(workList);
+        model.addAttribute("order", order);
 
         //final Integer actionId = Integer.valueOf(req.getParameter("actionId"));
 //        Action action1 = standartActionStorage.getById(actionId);
 //        workService.save(action1);
-        return "welldone";
+        return "order";
     }
 
 //    @RequestMapping(value = "/basic", method= RequestMethod.GET)
@@ -125,7 +128,7 @@ public class WorkController {
         final Integer actionId = Integer.valueOf(req.getParameter("actionId"));
         Action action1 = standartActionStorage.getById(actionId);
 //        workService.save(action1);
-        return "welldone";
+        return "order";
     }
 
     @RequestMapping(path = "/modal/{id}/delete", method = RequestMethod.GET)
@@ -137,7 +140,7 @@ public class WorkController {
         final Integer actionId = Integer.valueOf(request.getParameter("actionId"));
         Action action1 = standartActionStorage.getById(actionId);
 //        workService.save(action1);
-        return "welldone";
+        return "order";
     }
 
 

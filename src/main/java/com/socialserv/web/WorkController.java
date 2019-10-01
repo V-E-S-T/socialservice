@@ -56,46 +56,46 @@ public class WorkController {
     }
 
 //    @RequestMapping(value = "/order", method= RequestMethod.GET)
-    @RequestMapping(value = "/order", method= RequestMethod.POST, consumes = {"application/x-www-form-urlencoded"})
+//    @RequestMapping(value = "/order", method= RequestMethod.POST, consumes = {"application/x-www-form-urlencoded"})
 //    public String order(@ModelAttribute(value="order") Order order){
-    public String order(Model model){
+//    public String order(Model model){
 
         //final Integer actionId = Integer.valueOf(req.getParameter("actionId"));
 //        Action action1 = standartActionStorage.getById(actionId);
 //        workService.save(action1);
-        return "order";
-    }
+//        return "order";
+//    }
 
-    @RequestMapping(value = "/order/{packet}", method= RequestMethod.GET)
-    public String orderGet(@PathVariable("packet") String packet, Model model){
-
-        Order order = new Order();
-
-        List<Work> workList;
-
-        System.out.println("BASIC");
-
-        if(packet.equals(StandartActionStorage.BASIC)){
-            workList = StandartActionStorage.getActionListBasic().stream().map(action -> new Work(action, LocalDateTime.now())).collect(Collectors.toList());
-        }
-        else if(packet.equals(StandartActionStorage.ALL_INCLUSIVE)){
-            workList = StandartActionStorage.getActionListAllInclude().stream().map(action -> new Work(action, LocalDateTime.now())).collect(Collectors.toList());
-        }
-        else if(packet.equals(StandartActionStorage.PREMIUM)){
-            workList = StandartActionStorage.getActionListPremium().stream().map(action -> new Work(action, LocalDateTime.now())).collect(Collectors.toList());
-        }
-        else {
-            workList = StandartActionStorage.getAll().stream().map(action -> new Work(action, LocalDateTime.now())).collect(Collectors.toList());
-        }
-
-        order.setWorkList(workList);
-        model.addAttribute("order", order);
-
-        //final Integer actionId = Integer.valueOf(req.getParameter("actionId"));
-//        Action action1 = standartActionStorage.getById(actionId);
-//        workService.save(action1);
-        return "order";
-    }
+//    @RequestMapping(value = "/order/{packet}", method= RequestMethod.GET)
+//    public String orderGet(@PathVariable("packet") String packet, Model model){
+//
+//        Order order = new Order();
+//
+//        List<Work> workList;
+//
+//        System.out.println("BASIC");
+//
+//        if(packet.equals(StandartActionStorage.BASIC)){
+//            workList = StandartActionStorage.getActionListBasic().stream().map(action -> new Work(action, LocalDateTime.now())).collect(Collectors.toList());
+//        }
+//        else if(packet.equals(StandartActionStorage.ALL_INCLUSIVE)){
+//            workList = StandartActionStorage.getActionListAllInclude().stream().map(action -> new Work(action, LocalDateTime.now())).collect(Collectors.toList());
+//        }
+//        else if(packet.equals(StandartActionStorage.PREMIUM)){
+//            workList = StandartActionStorage.getActionListPremium().stream().map(action -> new Work(action, LocalDateTime.now())).collect(Collectors.toList());
+//        }
+//        else {
+//            workList = StandartActionStorage.getAll().stream().map(action -> new Work(action, LocalDateTime.now())).collect(Collectors.toList());
+//        }
+//
+//        order.setWorkList(workList);
+//        model.addAttribute("order", order);
+//
+//        //final Integer actionId = Integer.valueOf(req.getParameter("actionId"));
+////        Action action1 = standartActionStorage.getById(actionId);
+////        workService.save(action1);
+//        return "order";
+//    }
 
 //    @RequestMapping(value = "/basic", method= RequestMethod.GET)
 //    @ResponseBody
@@ -131,17 +131,17 @@ public class WorkController {
         return "order";
     }
 
-    @RequestMapping(path = "/modal/{id}/delete", method = RequestMethod.GET)
-    public String delete( @PathVariable("id") long id, HttpServletRequest request, Model model){
-
-
-
-
-        final Integer actionId = Integer.valueOf(request.getParameter("actionId"));
-        Action action1 = standartActionStorage.getById(actionId);
-//        workService.save(action1);
-        return "order";
-    }
+//    @RequestMapping(path = "/order/ppp/{id}", method = RequestMethod.GET)
+//    public String delete( @PathVariable("id") long id, HttpServletRequest request, Model model, @ModelAttribute("workList") List<Work> workList){
+//
+//        workList.remove(id);
+//
+//
+////        final Integer actionId = Integer.valueOf(request.getParameter("actionId"));
+////        Action action1 = standartActionStorage.getById(actionId);
+////        workService.save(action1);
+//        return "order";
+//    }
 
 
 

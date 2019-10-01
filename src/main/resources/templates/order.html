@@ -93,140 +93,53 @@
     <div class="container">
         <div class="row">
 
-            <div class="col-md-6 col-lg-3">
-                <div class="block-pricing">
-                    <div class="table">
-                        <h4>базовый</h4>
-                        <h2>100 рублей/неделя</h2>
-                        <ul class="list-unstyled" th:each="action : ${basicActions}">
-                            <li  th:text="${action.description}"></li>
-                        </ul>
-                        <div class="table_btn">
-                            <a class="btn fa fa-shopping-cart newBtn" th:href="@{order/{basic}}" role="button">
-                                Заказать
+            <div class="form-group">
+                <table class="table table-bordered table-hover" id="datatable2">
+                    <thead>
+                    <tr>
+                        <th>Описание услуги</th>
+                        <th>Количество раз в неделю</th>
+                        <th>Период действия услуги</th>
+                        <th>Удалить услугу</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="work : ${order.getWorkList()}">
+                        <td><span th:text="${work.description}"> Описание услуги </span></td>
+                        <td>
+                            <select name="position" id="position22" class="form-control">
+                                <option value="">--Select Position--</option>
+                                <option value="Frontend Developer">Frontend Developer</option>
+                                <option value="UI/UX Engineer">UI/UX Engineer</option>
+                                <option value="iOS Engineer">iOS Engineer</option>
+                                <option value="Android Developer">Android Developer</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select name="position" id="position222" class="form-control">
+                                <option value="">--Select Position--</option>
+                                <option value="Frontend Developer">Frontend Developer</option>
+                                <option value="UI/UX Engineer">UI/UX Engineer</option>
+                                <option value="iOS Engineer">iOS Engineer</option>
+                                <option value="Android Developer">Android Developer</option>
+                            </select>
+                        </td>
+                        <td>
+<!--                            <button type="button" class="btn btn-danger" onclick="del()" th:href="@{/order/delete/{id}(id=${work.getId()})}">-->
+<!--                                удалить-->
+<!--                                <i class="fa fa-sk"></i>-->
+<!--                            </button>-->
+                            <a class="btn btn-danger" th:href="@{/order/ppp/{id}(id=${work.getId()})}" >
+                                удалить
+                                <i class="fa fa-sk"></i>
                             </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-3">
-                <div class="block-pricing">
-                    <div class="table">
-                        <h4>Всё включено</h4>
-                        <h2>200 рублей/неделя</h2>
-                        <ul class="list-unstyled" th:each="action : ${allInclusiveActions}">
-                            <li  th:text="${action.description}"></li>
-                        </ul>
-                        <div class="table_btn">
-                            <a class="btn fa fa-shopping-cart newBtn" th:href="@{order/{all_inclusive}}" role="button">
-                                Заказать
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-3">
-                <div class="block-pricing">
-                    <div class="table">
-                        <h4>Всё включено</h4>
-                        <h2>200 рублей/неделя</h2>
-                        <ul class="list-unstyled" th:each="action : ${premiumActions}">
-                            <li  th:text="${action.description}"></li>
-                        </ul>
-                        <div class="table_btn">
-                            <a class="btn fa fa-shopping-cart newBtn" th:href="@{order/{premium}}" role="button">
-                                Заказать
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-3">
-                    <div class="block-pricing">
-                        <div class="table">
-                            <h4>Все Услуги</h4>
-                            <h2>--</h2>
-                            <ul class="list-unstyled" th:each="action : ${allActions}">
-                                <li  th:text="${action.description}"></li>
-                            </ul>
-                            <div class="table_btn">
-                                <a class="btn fa fa-shopping-cart newBtn" th:href="@{order/{all_actions}}" role="button">
-                                    Заказать
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
-
-        <div class="col-xl-8 col-lg-7">
-            <div class="newTaskForm">
-                <form th:action="@{/order}" th:method="post" class="myForm" id="modalActionsForm">
-                    <div class="modal fade" id="newTaskModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-
-                                    <div class="form-group">
-                                        <table class="table table-bordered table-hover" id="datatable">
-                                            <thead>
-                                            <tr>
-                                                <th>Описание услуги</th>
-                                                <th>Количество раз в неделю</th>
-                                                <th>Период действия услуги</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            <tr th:each="action : ${actions}">
-                                                <td><span th:text="${action.description}"> Описание услуги </span></td>
-                                                <td>
-                                                    <select name="position" id="position2" class="form-control">
-                                                        <option value="">--Select Position--</option>
-                                                        <option value="Frontend Developer">Frontend Developer</option>
-                                                        <option value="UI/UX Engineer">UI/UX Engineer</option>
-                                                        <option value="iOS Engineer">iOS Engineer</option>
-                                                        <option value="Android Developer">Android Developer</option>
-                                                    </select>
-                                                </td>
-                                                <td>
-                                                    <select name="position" id="position" class="form-control">
-                                                        <option value="">--Select Position--</option>
-                                                        <option value="Frontend Developer">Frontend Developer</option>
-                                                        <option value="UI/UX Engineer">UI/UX Engineer</option>
-                                                        <option value="iOS Engineer">iOS Engineer</option>
-                                                        <option value="Android Developer">Android Developer</option>
-                                                    </select>
-                                                </td>
-                                                <td>
-                                                    <button type="button" class="btn btn-danger" onclick="del()" th:href="@{/modal/{id}/delete(id=${actions.indexOf(action)})}">
-                                                        удалить
-                                                        <i class="fa fa-sk"></i>
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <input type="submit" class="btn btn-success" value="save"/>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
+    </div>
 </section>
 
 <!--==========================

@@ -6,6 +6,8 @@ import java.util.List;
 
 public class Order implements Serializable {
 
+
+
     private int id;
 
     private int totalPrice;
@@ -13,6 +15,9 @@ public class Order implements Serializable {
     private String description;
 
     private List<Work> workList = new ArrayList<>();
+
+    public Order() {
+    }
 
     public int getId() {
         return id;

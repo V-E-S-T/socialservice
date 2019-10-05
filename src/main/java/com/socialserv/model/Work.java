@@ -14,6 +14,9 @@ public class Work {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "global_seq")
     private Integer id;
 
+    @Column(name = "id_work", nullable = false)
+    private int id_Work;
+
     @Column(name = "price", nullable = false)
     private int price;
 
@@ -34,6 +37,7 @@ public class Work {
 
     public Work(Action action, LocalDateTime registered) {
         this.price = action.getPrice();
+        this.id_Work = action.getId();
         this.description = action.getDescription();
         this.estimateTime = action.getEstimateTime();
         this.specialization = action.getSpecialization();
@@ -58,6 +62,14 @@ public class Work {
 
     public String getDescription() {
         return description;
+    }
+
+    public int getId_Work() {
+        return id_Work;
+    }
+
+    public void setId_Work(int id_Work) {
+        this.id_Work = id_Work;
     }
 
     public void setDescription(String description) {
@@ -95,14 +107,23 @@ public class Work {
 
         Work work = (Work) o;
 
-        if (!getId().equals(work.getId())) return false;
-        return getRegistered().equals(work.getRegistered());
+        if (getId_Work() != work.getId_Work()) return false;
+        if (getPrice() != work.getPrice()) return false;
+        if (getEstimateTime() != work.getEstimateTime()) return false;
+        if (getId() != null ? !getId().equals(work.getId()) : work.getId() != null) return false;
+        if (getSpecialization() != work.getSpecialization()) return false;
+        return getRegistered() != null ? getRegistered().equals(work.getRegistered()) : work.getRegistered() == null;
     }
 
     @Override
     public int hashCode() {
-        int result = getId().hashCode();
-        result = 31 * result + getRegistered().hashCode();
+        int result = getId() != null ? getId().hashCode() : 0;
+        result = 31 * result + getId_Work();
+        result = 31 * result + getPrice();
+        result = 31 * result + getEstimateTime();
+        result = 31 * result + (getSpecialization() != null ? getSpecialization().hashCode() : 0);
+        result = 31 * result + (getRegistered() != null ? getRegistered().hashCode() : 0);
         return result;
     }
+
 }

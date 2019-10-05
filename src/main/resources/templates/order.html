@@ -104,7 +104,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="work : ${order.getWorkList()}">
+                    <tr th:each="work : ${workList}">
                         <td><span th:text="${work.description}"> Описание услуги </span></td>
                         <td>
                             <select name="position" id="position22" class="form-control">
@@ -129,7 +129,7 @@
 <!--                                удалить-->
 <!--                                <i class="fa fa-sk"></i>-->
 <!--                            </button>-->
-                            <a class="btn btn-danger" th:href="@{/order/ppp/{id}(id=${work.getId()})}" >
+                            <a class="btn btn-danger" th:href="@{/order/delete/{index}(index=${workList.indexOf(work)})}" >
                                 удалить
                                 <i class="fa fa-sk"></i>
                             </a>

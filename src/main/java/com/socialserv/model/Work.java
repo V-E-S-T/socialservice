@@ -37,7 +37,7 @@ public class Work {
 
     public Work(Action action, LocalDateTime registered) {
         this.price = action.getPrice();
-        this.id_Work = action.getId();
+        this.id_Work = calculateId_Work(action.getId(), registered);
         this.description = action.getDescription();
         this.estimateTime = action.getEstimateTime();
         this.specialization = action.getSpecialization();
@@ -124,6 +124,10 @@ public class Work {
         result = 31 * result + (getSpecialization() != null ? getSpecialization().hashCode() : 0);
         result = 31 * result + (getRegistered() != null ? getRegistered().hashCode() : 0);
         return result;
+    }
+
+    private int calculateId_Work(int id, LocalDateTime registered){
+        return id + registered.hashCode();
     }
 
 }

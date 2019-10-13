@@ -39,7 +39,7 @@ public class ShoppingCart {
     }
 
     public List<Work> deleteWork(int index){
-        getWorkList().removeIf(work -> getWorkList().indexOf(work) == index);
+        getWorkList().removeIf(work -> work.getId_Work() == index);
         return getWorkList();
     }
 

@@ -7,12 +7,14 @@ import com.socialserv.model.Work;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.annotation.SessionScope;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -52,24 +54,22 @@ public class OrderController {
 
         if(packet.equals(StandartActionStorage.BASIC)){
             cart.setWorkList(
-                    StandartActionStorage.getActionListBasic().stream()
-                            .map(action -> new Work(action, LocalDateTime.now()))
-                            .collect(Collectors.toList())
+                    getWorkList(StandartActionStorage.getActionListBasic())
             );
         }
         else if(packet.equals(StandartActionStorage.ALL_INCLUSIVE)){
             cart.setWorkList(
-                    StandartActionStorage.getActionListAllInclude().stream()
-                            .map(action -> new Work(action, LocalDateTime.now()))
-                            .collect(Collectors.toList())
+                    getWorkList(StandartActionStorage.getActionListAllInclude())
             );
         }
         else if(packet.equals(StandartActionStorage.PREMIUM)){
             cart.setWorkList(
-                    StandartActionStorage.getActionListPremium().stream()
-                            .map(action -> new Work(action, LocalDateTime.now()))
-                            .collect(Collectors.toList())
+                    getWorkList(StandartActionStorage.getActionListPremium())
             );
+        }
+        else if(packet.equals(StandartActionStorage.ALL_ACTIONS)){
+//            model.addAttribute("allWorksList", getWorkList(StandartActionStorage.getAll()));
+            return "order";
         }
 
         workList =  cart.getWorkList();
@@ -83,16 +83,22 @@ public class OrderController {
 //        return order;
 //    }
 
-//    @ModelAttribute("WorkList")
-//    public ArrayList<Work> addWorkList(){
-//        return new ArrayList<>();
-//    }
+    @ModelAttribute("allWorkList")
+    public List<Work> allWorkList(){
+        return getWorkList(StandartActionStorage.getAll());
+    }
 
     @RequestMapping(path = "/delete/{index}", method = RequestMethod.GET)
     public String delete(@PathVariable("index") int index, Model model){
         cart.deleteWork(index);
         model.addAttribute("workList", cart.getWorkList());
         return "order";
+    }
+
+    private List<Work> getWorkList(List<Action> actionList){
+        return actionList.stream()
+                .map(action -> new Work(action, LocalDateTime.now()))
+                .collect(Collectors.toList());
     }
 
 }

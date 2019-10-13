@@ -92,7 +92,6 @@
 
     <div class="container">
         <div class="row">
-
             <div class="form-group">
                 <table class="table table-bordered table-hover" id="datatable2">
                     <thead>
@@ -104,40 +103,130 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="work : ${workList}">
-                        <td><span th:text="${work.description}"> Описание услуги </span></td>
-                        <td>
-                            <select name="position" id="position22" class="form-control">
-                                <option value="">--Select Position--</option>
-                                <option value="Frontend Developer">Frontend Developer</option>
-                                <option value="UI/UX Engineer">UI/UX Engineer</option>
-                                <option value="iOS Engineer">iOS Engineer</option>
-                                <option value="Android Developer">Android Developer</option>
-                            </select>
-                        </td>
-                        <td>
-                            <select name="position" id="position222" class="form-control">
-                                <option value="">--Select Position--</option>
-                                <option value="Frontend Developer">Frontend Developer</option>
-                                <option value="UI/UX Engineer">UI/UX Engineer</option>
-                                <option value="iOS Engineer">iOS Engineer</option>
-                                <option value="Android Developer">Android Developer</option>
-                            </select>
-                        </td>
-                        <td>
-<!--                            <button type="button" class="btn btn-danger" onclick="del()" th:href="@{/order/delete/{id}(id=${work.getId()})}">-->
-<!--                                удалить-->
-<!--                                <i class="fa fa-sk"></i>-->
-<!--                            </button>-->
-                            <a class="btn btn-danger" th:href="@{/order/delete/{index}(index=${work.getId_Work()})}" >
-                                удалить
-                                <i class="fa fa-sk"></i>
-                            </a>
-                        </td>
-                    </tr>
+                        <tr th:each="work : ${workList}">
+                            <!--<td><span th:text="${work.description}"> Описание услуги </span></td>-->
+                            <td>
+                                <!--<label for="work_name">Выбрать услугу</label>-->
+                                <select name="work_name" id="work_name" class="form-control work_name">
+                                    <option value="">--Описание услуги--</option>
+                                    <option th:each="work : ${allWorkList}" id="optionId" value="Work description">Описание услуги
+                  <
+                                    </option>
+                                    <!--<option value="UI/UX Engineer">UI/UX Engineer</option>-->
+                                    <!--<option value="iOS Engineer">iOS Engineer</option>-->
+                                    <!--<option value="Android Developer">Android Developer</option>-->
+                                </select>
+                            </td>
+                            <td>
+                                <select name="position" id="position222" class="form-control">
+                                    <option value="">--Select Position--</option>
+                                    <option value="Frontend Developer">Frontend Developer</option>
+                                    <option value="UI/UX Engineer">UI/UX Engineer</option>
+                                    <option value="iOS Engineer">iOS Engineer</option>
+                                    <option value="Android Developer">Android Developer</option>
+                                </select>
+                            </td>
+                            <td>
+    <!--                            <button type="button" class="btn btn-danger" onclick="del()" th:href="@{/order/delete/{id}(id=${work.getId()})}">-->
+    <!--                                удалить-->
+    <!--                                <i class="fa fa-sk"></i>-->
+    <!--                            </button>-->
+                                <a class="btn btn-danger" th:href="@{/order/delete/{index}(index=${work.getId_Work()})}" >
+                                    удалить
+                                    <i class="fa fa-sk"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        <!--<tr>-->
+                            <!--<td>-->
+                                <!--&lt;!&ndash;<button type="button" class="btn btn-outline-success" onclick="modal()">&ndash;&gt;-->
+                                <!--<button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#modal_add_Work">-->
+                                    <!--Добавить услугу-->
+                                    <!--<i class="fa fa-plus"></i>-->
+                                <!--</button>-->
+                            <!--</td>-->
+                        <!--</tr>-->
                     </tbody>
                 </table>
+                <!--<button type="button" class="btn btn-outline-success" onclick="modal()">-->
+                <form action="#" th:action="@{/order/{all_actions}}">
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal_add_Work">
+                        Добавить услугу
+                        <i class="fa fa-plus"></i>
+                    </button>
+                </form>
+
             </div>
+        </div>
+    </div>
+
+    <!--modal form for add button-->
+
+    <div class="col-xl-8 col-lg-7">
+        <!--<div class="newTaskForm">-->
+        <div>
+            <form action="#" th:action="@{/order/add}" th:method="post" class="myForm" id="modalActionsForm">
+                <div class="modal fade" id="modal_add_Work" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <table class="table table-bordered table-hover" id="datatable">
+                                        <thead>
+                                        <tr>
+                                            <th>Описание услуги</th>
+                                            <th>Количество раз в неделю</th>
+                                            <th>Период действия услуги</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr th:each="work : ${allWorksList}">
+                                                <td><span th:text="${work.description}"> Описание услуги </span></td>
+                                                <td>
+                                                    <!--<label for="work_name">Выбрать услугу</label>-->
+                                                    <!--<select name="position" id="work_name" class="form-control">-->
+                                                        <!--<option value="">&#45;&#45;Select Position&#45;&#45;</option>-->
+                                                        <!--<option value="Frontend Developer">Frontend Developer</option>-->
+                                                        <!--<option value="UI/UX Engineer">UI/UX Engineer</option>-->
+                                                        <!--<option value="iOS Engineer">iOS Engineer</option>-->
+                                                        <!--<option value="Android Developer">Android Developer</option>-->
+                                                    <!--</select>-->
+                                                </td>
+                                                <td>
+                                                    <label for="work_name">Выбрать услугу</label>
+                                                    <select name="position" id="position" class="form-control">
+                                                        <option value="">--Select Position--</option>
+                                                        <option value="Frontend Developer">Frontend Developer</option>
+                                                        <option value="UI/UX Engineer">UI/UX Engineer</option>
+                                                        <option value="iOS Engineer">iOS Engineer</option>
+                                                        <option value="Android Developer">Android Developer</option>
+                                                    </select>
+                                                </td>
+                                                <td>
+                                                    <button type="button" class="btn btn-danger" onclick="del()" th:href="@{/modal/{id}/delete(id=${actions.indexOf(action)})}">
+                                                        удалить
+                                                        <i class="fa fa-sk"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <input type="submit" class="btn btn-success" value="save"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </section>

@@ -21,15 +21,13 @@ $(document).ready(function(){
     $('.newBtn').on('click', function(event){
 
         //prevents redirection to blank page with JSON-Task-Object
-        event.preventDefault();
+        // event.preventDefault();
+        //
+        // var href = $(this).attr('href');
+        // $.get(href, function(work){
+        //     $('.work_name #optionId').val(work.description);
+        // });
 
-        var href = $(this).attr('href');
-        $.get(href, function(work){
-            $('.work_name #optionId').val(work.description);
-            // $('.myForm #title').val(task.title);
-            // $('.myForm #content').val(task.content);
-            // $('.myForm #status').val(task.status);
-        });
         // $.get(href, function(modalActions){
         //     for (let i = 0; i < modalActions.size(); i++) {
         //         $('.myForm #description').val(modalActions.get(i).description);

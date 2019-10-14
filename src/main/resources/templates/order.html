@@ -106,24 +106,27 @@
                         <tr th:each="work : ${workList}">
                             <!--<td><span th:text="${work.description}"> Описание услуги </span></td>-->
                             <td>
-                                <!--<label for="work_name">Выбрать услугу</label>-->
-                                <select name="work_name" id="work_name" class="form-control work_name">
+                                <select class="form-control">
                                     <option value="">--Описание услуги--</option>
-                                    <option th:each="work : ${allWorkList}" id="optionId" value="Work description">Описание услуги
-                  <
+                                    <option th:each="workFromAllList : ${allWorkList}"
+                                            th:value="${workFromAllList.getDescription()}"
+                                            th:text="${workFromAllList.getDescription()}"
+                                            th:selected="${work.calculate_Action_Id() == workFromAllList.calculate_Action_Id()}">                  <
                                     </option>
-                                    <!--<option value="UI/UX Engineer">UI/UX Engineer</option>-->
-                                    <!--<option value="iOS Engineer">iOS Engineer</option>-->
-                                    <!--<option value="Android Developer">Android Developer</option>-->
                                 </select>
                             </td>
                             <td>
-                                <select name="position" id="position222" class="form-control">
-                                    <option value="">--Select Position--</option>
-                                    <option value="Frontend Developer">Frontend Developer</option>
-                                    <option value="UI/UX Engineer">UI/UX Engineer</option>
-                                    <option value="iOS Engineer">iOS Engineer</option>
-                                    <option value="Android Developer">Android Developer</option>
+                                <select class="form-control">
+                                    <option th:each="i : ${#numbers.sequence(1, 7)}"
+                                            th:value="${i}"
+                                            th:text="${i}" th:selected="${i == 1}"></option>
+                                </select>
+                            </td>
+                            <td>
+                                <select class="form-control">
+                                    <option th:each="i : ${#numbers.sequence(1, 7)}"
+                                            th:value="${i}"
+                                            th:text="${i}" th:selected="${i == 1}"></option>
                                 </select>
                             </td>
                             <td>

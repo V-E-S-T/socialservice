@@ -2,6 +2,7 @@ package com.socialserv.model;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.time.Period;
 
 @Entity
 @Table(name = "works")
@@ -32,12 +33,14 @@ public class Work {
     @Column(name = "registered", nullable = false)
     private LocalDateTime registered;
 
+    private Period workPeriod;
+
     public Work() {
     }
 
     public Work(Action action, LocalDateTime registered) {
         this.price = action.getPrice();
-        this.id_Work = calculateId_Work(action.getId(), registered);
+        this.id_Work = calculate_Id_Work(action.getId(), registered);
         this.description = action.getDescription();
         this.estimateTime = action.getEstimateTime();
         this.specialization = action.getSpecialization();
@@ -100,6 +103,13 @@ public class Work {
         this.registered = registered;
     }
 
+    public Period getWorkPeriod() {
+        return workPeriod;
+    }
+    public void setWorkPeriod(Period workPeriod) {
+        this.workPeriod = workPeriod;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -112,7 +122,8 @@ public class Work {
         if (getEstimateTime() != work.getEstimateTime()) return false;
         if (getId() != null ? !getId().equals(work.getId()) : work.getId() != null) return false;
         if (getSpecialization() != work.getSpecialization()) return false;
-        return getRegistered() != null ? getRegistered().equals(work.getRegistered()) : work.getRegistered() == null;
+        if (getRegistered() != work.getRegistered()) return false;
+        return getWorkPeriod() != null ? getWorkPeriod().equals(work.getWorkPeriod()) : work.getWorkPeriod() == null;
     }
 
     @Override
@@ -123,11 +134,16 @@ public class Work {
         result = 31 * result + getEstimateTime();
         result = 31 * result + (getSpecialization() != null ? getSpecialization().hashCode() : 0);
         result = 31 * result + (getRegistered() != null ? getRegistered().hashCode() : 0);
+        result = 31 * result + (getWorkPeriod() != null ? getWorkPeriod().hashCode() : 0);
         return result;
     }
 
-    private int calculateId_Work(int id, LocalDateTime registered){
+    private int calculate_Id_Work(int id, LocalDateTime registered){
         return id + registered.hashCode();
+    }
+
+    public int calculate_Action_Id(){
+        return id_Work - registered.hashCode();
     }
 
 }
